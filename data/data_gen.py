@@ -73,7 +73,7 @@ def generate_dataset(n_samples=100000, n_terms=5):
         inputs, target = rule_fn(n_terms)
 
         # skip if any number exceeds 1000
-        if max(inputs) > 1000 or target > 1000:
+        if max(inputs) >= 1000 or target >= 1000:
             continue
 
         dataset.append(
