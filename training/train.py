@@ -177,7 +177,7 @@ def train():
     print("\nTraining complete!")
 
     # save final model separately
-    ssave_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "patternmind_final.pt")
+    save_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "patternmind_final.pt")
     torch.save(model.state_dict(), save_path)
     print(f"Final model saved → {save_path}")
 
