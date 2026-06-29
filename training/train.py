@@ -13,7 +13,7 @@ from model.model import PatternMind
 
 
 BATCH_SIZE = 32  # sequences per batch
-EPOCHS = 20  # how many times we pass through full dataset
+EPOCHS = 5  # how many times we pass through full dataset
 LEARNING_RATE = 0.0001  # how big each weight update is
 EMBED_DIM = 128  # vector size for each token
 NUM_HEADS = 8  # attention heads
