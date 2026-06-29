@@ -21,7 +21,7 @@ NUM_BLOCKS = 4  # transformer blocks
 FF_DIM = 256  # feed forward layer size
 MAX_SEQ_LEN = 7  # SOS + 5 numbers + EOS
 DROPOUT = 0.1  # randomly turn off 10% neurons during training
-CHECKPOINT_PATH = "training/checkpoint.pt"  # where to save progress
+CHECKPOINT_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "checkpoint.pt")  # where to save progress
 
 
 def load_dataset(path="data/dataset.json"):
@@ -177,8 +177,9 @@ def train():
     print("\nTraining complete!")
 
     # save final model separately
-    torch.save(model.state_dict(), "training/patternmind_final.pt")
-    print("Final model saved → training/patternmind_final.pt")
+    save_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "patternmind_final.pt")
+    torch.save(model.state_dict(), save_path)
+    print(f"Final model saved → {save_path}")
 
 
 if __name__ == "__main__":
