@@ -111,8 +111,8 @@ def generate_dataset(n_samples=1000000, n_terms=5):
 
         inputs, target = rule_fn(n_terms)
 
-        # skip if any number exceeds 1000
-        if max(inputs) >= 1000 or target >= 1000:
+        # skip if any number doesn't obey 0 < n < 1000
+        if max(inputs) >= 1000 or target >= 1000 or min(inputs) <=0 or target <= 0:
             continue
 
         dataset.append(
@@ -127,7 +127,7 @@ def generate_dataset(n_samples=1000000, n_terms=5):
 
 if __name__ == "__main__":
     print("Generating dataset...")
-    data = generate_dataset(n_samples=100000, n_terms=5)
+    data = generate_dataset()
     print(f"Generated {len(data)} samples")
 
     # save to a json file
