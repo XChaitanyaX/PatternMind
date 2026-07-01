@@ -54,7 +54,43 @@ def polynomial(n_terms):
     return seq[:-1], seq[-1]
 
 
-def generate_dataset(n_samples=100000, n_terms=5):
+def mixed_multiply_subtract(n_terms):
+    start = random.randint(1, 20)
+    subtract = random.randint(1, 5)
+    seq = [start]
+    for i in range(n_terms):
+        if i % 2 == 0:
+            seq.append(seq[-1] * 2)
+        else:
+            seq.append(seq[-1] - subtract)
+    return seq[:-1], seq[-1]
+
+
+def mixed_add_multiply(n_terms):
+    start = random.randint(1, 20)
+    add = random.randint(1, 10)
+    seq = [start]
+    for i in range(n_terms):
+        if i % 2 == 0:
+            seq.append(seq[-1] + add)
+        else:
+            seq.append(seq[-1] * 2)
+    return seq[:-1], seq[-1]
+
+
+def mixed_subtract_multiply(n_terms):
+    start = random.randint(5, 30)
+    subtract = random.randint(1, 5)
+    seq = [start]
+    for i in range(n_terms):
+        if i % 2 == 0:
+            seq.append(seq[-1] - subtract)
+        else:
+            seq.append(seq[-1] * 2)
+    return seq[:-1], seq[-1]
+
+
+def generate_dataset(n_samples=1000000, n_terms=5):
     rules = [
         arithmetic,
         geometric,
@@ -63,6 +99,9 @@ def generate_dataset(n_samples=100000, n_terms=5):
         fibonacci,
         mixed,
         polynomial,
+        mixed_add_multiply,
+        mixed_multiply_subtract,
+        mixed_subtract_multiply,
     ]
     dataset = []
 
